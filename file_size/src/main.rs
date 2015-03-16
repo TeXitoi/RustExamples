@@ -24,7 +24,11 @@ fn file_size_by_name(file_name: String) -> Result<u64, &'static str> {
 
 fn file_size(file: File) -> Result<u64, &'static str> {
     match file.metadata() {
-        Ok(metadata) => if metadata.is_file() {Ok(metadata.len())} else {Err("This is not a file")},
+        Ok(metadata) => if metadata.is_file() {
+                            Ok(metadata.len())
+                        } else {
+                            Err("This is not a file")
+                        },
         _ => Err("Cannot get file metadata")
     }
 }
